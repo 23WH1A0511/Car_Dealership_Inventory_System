@@ -153,19 +153,27 @@ npm run build
 
 ## Screenshots
 
-![Admin Dashboard](./Screenshots/Admin%20Dashboard.png)
-
+### Cover Page
 ![Cover Page](./Screenshots/Cover%20Page.png)
 
-![My Orders](./Screenshots/MyOrders.png)
+### Login Page
+![Login Page](./Screenshots/login_page.png)
 
+### Sign Up Page
 ![Sign Up Page](./Screenshots/SignUp%20Page.png)
 
-![Stock & Restocking](./Screenshots/Stock%26Restocking.png)
-
+### User Dashboard
 ![User Dashboard](./Screenshots/User%20Dashboard.png)
 
-![Login Page](./Screenshots/login_page.png)
+### My Orders
+![My Orders](./Screenshots/MyOrders.png)
+
+### Admin Dashboard
+![Admin Dashboard](./Screenshots/Admin%20Dashboard.png)
+
+### Stock & Restocking
+![Stock & Restocking](./Screenshots/Stock%26Restocking.png)
+
 
 ## My AI Usage
 
