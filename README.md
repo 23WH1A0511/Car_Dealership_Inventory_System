@@ -135,22 +135,6 @@ An administrator can then sign in and manage inventory and customer orders from 
 - `GET /api/orders` - List orders available to the authenticated user
 - `PATCH /api/orders/:id/status` - Update an order status as an administrator
 
-## Tests
-
-Run the backend test suite from the project root:
-
-```bash
-npm test
-```
-
-The tests use MongoDB Memory Server and cover authentication, protected routes, admin authorization, vehicle search, and atomic stock decrementing during purchase.
-
-To build the frontend for production:
-
-```bash
-npm run build
-```
-
 ## Screenshots
 
 ### Cover Page
