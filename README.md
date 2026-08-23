@@ -155,7 +155,7 @@ npm run build
 
 These Markdown image links are ready for final application images. Add the corresponding image files under `docs/screenshots/` when screenshots are available.
 
-![User dashboard with three-column vehicle inventory](docs/screenshots/user-dashboard.png)
+![CoverPage](/Screenshots/Cover Page.png)
 
 ![Admin dashboard with inventory management](docs/screenshots/admin-dashboard.png)
 
