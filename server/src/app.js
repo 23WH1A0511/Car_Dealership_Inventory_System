@@ -1,0 +1,14 @@
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './routes/authRoutes.js';
+import vehicleRoutes from './routes/vehicleRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
+const app = express();
+app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:5173' }));
+app.use(express.json());
+app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
+app.use('/api/auth', authRoutes);
+app.use('/api/vehicles', vehicleRoutes);
+app.use('/api/orders', orderRoutes);
+app.use((err, _, res, __) => res.status(err.name === 'ValidationError' ? 400 : 500).json({ message: err.name === 'ValidationError' ? err.message : 'Something went wrong.' }));
+export default app;

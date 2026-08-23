@@ -1,0 +1,11 @@
+/* Keep inventory form entries readable against the dark admin panel. */
+form[class*="bg-"] input,
+form[class*="bg-"] select {
+  background: #ffffff;
+  color: #101522 !important;
+  border: 0;
+  border-radius: 6px;
+  padding: 11px;
+}
+
+form[class*="bg-"] input::placeholder { color: #64748b; }

@@ -1,0 +1,9 @@
+@media (min-width: 640px) {
+  .mt-9.grid.lg\:grid-cols-\[1fr_330px\] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mt-9 > section > .grid.gap-5[class~="sm:grid-cols-2"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

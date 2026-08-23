@@ -1,0 +1,13 @@
+import { Router } from 'express';
+import { protect, adminOnly } from '../middleware/auth.js';
+import { listVehicles, searchVehicles, createVehicle, updateVehicle, deleteVehicle, purchaseVehicle, restockVehicle } from '../controllers/vehicleController.js';
+const router = Router();
+router.use(protect);
+router.get('/', listVehicles);
+router.get('/search', searchVehicles);
+router.post('/', adminOnly, createVehicle);
+router.put('/:id', adminOnly, updateVehicle);
+router.delete('/:id', adminOnly, deleteVehicle);
+router.post('/:id/purchase', purchaseVehicle);
+router.post('/:id/restock', adminOnly, restockVehicle);
+export default router;
