@@ -1,43 +1,165 @@
-# Velocity Motors — Dealership Inventory System
+# Velocity Motors - Dealership Inventory System
 
-A polished MERN single-page application for browsing, managing, and purchasing dealership inventory. It provides role-aware inventory management, secure token authentication, responsive filtering, and an elegant, editorial-style experience.
+Velocity Motors is a full-stack car dealership inventory application. Users can browse and search available vehicles, create an account, purchase vehicles, and track their orders. Administrators have a protected inventory workspace for adding, editing, deleting, restocking, and managing the status of customer orders.
 
-## Stack
+## Features
 
-- React, Vite, Tailwind CSS
-- Node.js, Express, JWT and Mongoose
-- MongoDB (a persistent local instance or MongoDB Atlas)
-- Vitest, Supertest, and MongoDB Memory Server for API tests
+- Responsive vehicle inventory with search and category filtering
+- User registration and login with JWT authentication
+- Vehicle purchasing with stock validation and inventory decrementing
+- User order history and order status tracking
+- Admin-only inventory and order management
+- MongoDB persistence through Mongoose
+- Automated API tests for authentication, authorization, search, and purchasing
 
-## Run locally
+## Technology Stack
 
-1. Install dependencies: `npm.cmd install`
-2. Copy `.env.example` to `server/.env` and set a strong `JWT_SECRET`. For Atlas, replace `MONGODB_URI` with your Atlas connection string.
-3. Start MongoDB. The quickest local option is `docker compose up -d mongodb`; alternatively use a locally installed MongoDB service.
-4. Run `npm.cmd run dev` and open `http://localhost:5173`.
+- **Frontend:** React 18, Vite, Tailwind CSS, Lucide React
+- **Backend:** Node.js, Express, JWT, bcryptjs, Mongoose
+- **Database:** MongoDB 7, locally or through MongoDB Atlas
+- **Testing:** Vitest, Supertest, MongoDB Memory Server
 
-The browser app proxies `/api` requests to `http://localhost:5000`. The backend verifies `MONGODB_URI` at startup and uses Mongoose for persistent collections.
+## Project Structure
 
-## Authentication and roles
+```text
+client/                 React and Vite frontend
+  src/                  Components and styles
+server/                 Express backend
+  src/controllers/      Request handlers
+  src/models/           Mongoose models
+  src/routes/           API route definitions
+  src/scripts/          Admin and vehicle seed scripts
+  tests/                API test suite
+docker-compose.yml      Local MongoDB service
+PROMPTS.md              Raw AI conversation log
+```
 
-Register through the UI, then use the account normally to purchase vehicles. Every new account has the `user` role. To make an account an administrator after registering:
+## Prerequisites
 
-`npm.cmd run make-admin --workspace server -- email@example.com`
+- Node.js 18 or later
+- npm
+- MongoDB 7 or later, or Docker Desktop
+- Git
 
-Admins can add, update, delete and restock inventory through protected API routes. The REST API supports:
+## Installation
 
-- `POST /api/auth/register`, `POST /api/auth/login`
-- `GET/POST /api/vehicles`, `GET /api/vehicles/search`
-- `PUT/DELETE /api/vehicles/:id`
-- `POST /api/vehicles/:id/purchase`, `POST /api/vehicles/:id/restock`
+From the project root, install all workspace dependencies:
+
+```bash
+npm install
+```
+
+The root package uses npm workspaces, so this installs dependencies for both `client` and `server`.
+
+## Environment Configuration
+
+Create `server/.env` with the following values:
+
+```env
+MONGODB_URI=mongodb://127.0.0.1:27017/velocity_motors
+JWT_SECRET=replace-with-a-long-random-secret
+PORT=5000
+```
+
+For MongoDB Atlas, replace `MONGODB_URI` with the Atlas connection string. Never commit `server/.env` or any other file containing credentials.
+
+## Start MongoDB
+
+To run MongoDB with Docker:
+
+```bash
+docker compose up -d mongodb
+```
+
+Alternatively, start a local MongoDB service and ensure it is listening on port `27017`.
+
+## Run the Backend
+
+In a terminal from the project root:
+
+```bash
+npm run dev --workspace server
+```
+
+The API runs at `http://localhost:5000`.
+
+For a production-style Node server, use:
+
+```bash
+npm run start --workspace server
+```
+
+## Run the Frontend
+
+In a second terminal from the project root:
+
+```bash
+npm run dev --workspace client
+```
+
+Open `http://localhost:5173` in a browser. Vite proxies frontend `/api` requests to the backend at `http://localhost:5000`.
+
+The frontend and backend can also be started together with:
+
+```bash
+npm run dev
+```
+
+## Seed Data and Administrator Access
+
+After MongoDB and the backend are running, insert sample vehicles with:
+
+```bash
+npm run seed-vehicles --workspace server
+```
+
+Register a normal account through the application. To grant that account administrator access, run:
+
+```bash
+npm run make-admin --workspace server -- email@example.com
+```
+
+An administrator can then sign in and manage inventory and customer orders from the admin dashboard.
+
+## API Overview
+
+- `POST /api/auth/register` - Create a user account
+- `POST /api/auth/login` - Authenticate a user
+- `GET /api/vehicles` - List inventory
+- `GET /api/vehicles/search` - Search inventory
+- `POST /api/vehicles` - Add a vehicle as an administrator
+- `PUT /api/vehicles/:id` - Update a vehicle as an administrator
+- `DELETE /api/vehicles/:id` - Delete a vehicle as an administrator
+- `POST /api/vehicles/:id/purchase` - Purchase an available vehicle
+- `POST /api/vehicles/:id/restock` - Restock a vehicle as an administrator
+- `GET /api/orders` - List orders available to the authenticated user
+- `PATCH /api/orders/:id/status` - Update an order status as an administrator
 
 ## Tests
 
-Run `npm.cmd test`. The suite covers authentication, protected endpoints, admin authorization, search, and the atomic purchase inventory decrement. It uses an isolated temporary MongoDB database for tests; the running application always uses the persistent URI in `server/.env`.
+Run the backend test suite from the project root:
+
+```bash
+npm test
+```
+
+The tests use MongoDB Memory Server and cover authentication, protected routes, admin authorization, vehicle search, and atomic stock decrementing during purchase.
+
+To build the frontend for production:
+
+```bash
+npm run build
+```
 
 ## Screenshots
 
-After starting the app, capture the responsive inventory dashboard at `http://localhost:5173` and add the image(s) to this section before publishing the repository.
+These Markdown image links are ready for final application images. Add the corresponding image files under `docs/screenshots/` when screenshots are available.
+
+![User dashboard with three-column vehicle inventory](docs/screenshots/user-dashboard.png)
+
+![Admin dashboard with inventory management](docs/screenshots/admin-dashboard.png)
+
+![Vehicle inventory and search view](docs/screenshots/inventory-search.png)
 
 ## My AI Usage
 
