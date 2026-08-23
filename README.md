@@ -153,13 +153,19 @@ npm run build
 
 ## Screenshots
 
-These Markdown image links are ready for final application images. Add the corresponding image files under `docs/screenshots/` when screenshots are available.
+![Admin Dashboard](./Screenshots/Admin%20Dashboard.png)
 
-![CoverPage](/Screenshots/Cover Page.png)
+![Cover Page](./Screenshots/Cover%20Page.png)
 
-![Admin dashboard with inventory management](docs/screenshots/admin-dashboard.png)
+![My Orders](./Screenshots/MyOrders.png)
 
-![Vehicle inventory and search view](docs/screenshots/inventory-search.png)
+![Sign Up Page](./Screenshots/SignUp%20Page.png)
+
+![Stock & Restocking](./Screenshots/Stock%26Restocking.png)
+
+![User Dashboard](./Screenshots/User%20Dashboard.png)
+
+![Login Page](./Screenshots/login_page.png)
 
 ## My AI Usage
 
